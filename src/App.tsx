@@ -1,7 +1,7 @@
-export default function App() {
+import { Header } from "./components/Header";
+// named exports vs default exports
+export function App() {
   return (
-    <div className="App">
-      Hello World!
-    </div>
+    <Header />
   );
 };
