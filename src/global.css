@@ -17,6 +17,13 @@
 
   --green-300: #00B37E;
   --green-500: #00875f;
+
+  --red-500: #F75A68;
+}
+
+:focus {
+    outline: transparent;
+    box-shadow: 0 0 0 2px var(--green-500);
 }
 
 html, body {
@@ -33,4 +40,25 @@ body, input, textarea, button {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 1rem;
+}
+
+.wrapper {
+    max-width: 112rem;
+    margin: 3.2rem auto;
+    padding: 0 1.6rem;
+
+    display: grid;
+    grid-template-columns: 256px 1fr;
+    gap: 3.2rem;
+    align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 50%;
+    }
+
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
 }
