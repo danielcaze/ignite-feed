@@ -1,4 +1,4 @@
-import React, { TextareaHTMLAttributes, useState } from 'react'
+import { FormEvent, ChangeEvent, useState, InvalidEvent } from 'react'
 import { format, formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
@@ -9,14 +9,14 @@ import styles from './Post.module.css'
 
 interface PostProps {
     author: {
-        avatarUrl: string
-        name: string
-        role: string
+        avatarUrl: string;
+        name: string;
+        role: string;
     }
-    publishedAt: Date
+    publishedAt: Date;
     content: {
-        type: string
-        content: string
+        type: "link" | "paragraph";
+        content: string;
     }[]
 }
 
@@ -33,17 +33,17 @@ export function Post({ author, publishedAt, content }: PostProps) {
         addSuffix: true
     })
 
-    function handleCreateNewComment(e: any) {
+    function handleCreateNewComment(e: FormEvent) {
         e.preventDefault();
         setComments(prev => [...prev, newCommentText]);
         setNewCommentText("");
     }
 
-    function handleNewCommentInvalid(e: any) {
+    function handleNewCommentInvalid(e: InvalidEvent<HTMLTextAreaElement>) {
         e.target.setCustomValidity("Esse campo e obrigatorio");
     }
 
-    function handleNewCommentChange(e: any) {
+    function handleNewCommentChange(e: ChangeEvent<HTMLTextAreaElement>) {
         e.target.setCustomValidity("");
         setNewCommentText(e.target.value);
     }
